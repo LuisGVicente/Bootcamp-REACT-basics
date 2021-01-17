@@ -1,0 +1,27 @@
+//Meter en un apartado sobre posibles preguntas en una entrevista:
+let a = 1;
+let b = a;
+b = 3;
+
+¿Qué valor tiene cada variable?
+console.log(a);//1
+console.log(b);//3
+
+
+let a ={num: 5};
+let b = a;
+b.name = 10;
+
+¿Qué valor tiene cada variable?
+console.log(a.num);//10 
+console.log(b.num);//10
+//Al contrario que con datos nativos (int, string, null..), los objetos y las arrays no se duplican sino que guardan referencias. B se convierte en otra manera de llamar a la variable A. Por eso al darle un nuevo valor a b.name, también cambia A 
+
+let a = {num: 5};
+let b = {pepe: a};
+let c = {...b};//Esto se llama destructuring, crea una copia de b PONERLO EN LOS APUNTES
+c.pepe.num = 10;
+¿Qué valor tiene cada variable?
+console.log(a.num)//10
+//Aunque creemos una copia de B, NO ROMPEMOS LA REFERENCIA, es decir, let b = {pepe: {num: 5}} continúa siéndolo aunque luego hagamos una copia de B en C. C está referenciado a B, y B a A, luego al darle un nuevo valor a C, también cambiamos A.
+Si queremos solucionar este problema deberíamos usar let c = JSON.parse(JSON.stringyfy(b)); porque primero convierte B en string y luego lo reconvierte en JSON. Este proceso sí rompe la referencia.
